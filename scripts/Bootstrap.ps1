@@ -19,6 +19,13 @@ Write-Status "Updating Angular CLI"
 Write-Status "Updating requirements"
 . $PSScriptRoot\Invoke-Npm install $quiet
 
+Write-Status "Updating Azure Function requirements"
+$project_root = Split-Path $PSScriptRoot
+$api_root = Join-Path $project_root "api"
+Push-Location $api_root
+& npm.cmd install
+Pop-Location
+
 if ($Global:console_functions) {
   # Define or update the console scripts if we want them
   . $PSScriptRoot\Console-Scripts.ps1
