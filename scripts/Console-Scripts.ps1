@@ -13,6 +13,14 @@ Set-Item function:global:Start-Server {
       [switch]$Async,
       [switch]$OpenBrowser
   )
+
+  $project_root = Split-Path $PSScriptRoot
+  $api_root = Join-Path $project_root "api"
+  Push-Location $api_root
+  Start-Process npm.cmd start
+  Start-Process npm.cmd run, watch
+  Pop-Location
+
   $ngArgs = @("serve")
   if ($OpenBrowser) {
       $ngArgs += "--open"
