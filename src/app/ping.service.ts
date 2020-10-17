@@ -15,7 +15,7 @@ export class PingService {
   private subscription: Subscription;
 
   constructor(private http: HttpClient) {
-    this.pageViewersSubject = new BehaviorSubject<string[]>(['Kevin']);
+    this.pageViewersSubject = new BehaviorSubject<string[]>(['Loading...']);
     this.pageViewers$ = this.pageViewersSubject.asObservable();
 
     this.subscription = timer(0, 5000).subscribe(result => {
