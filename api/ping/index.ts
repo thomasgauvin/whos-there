@@ -7,21 +7,28 @@ const httpTrigger: AzureFunction = async (context: Context, req: HttpRequest): P
 
     const redis: Tedis = new Tedis({
       port: 6380,
-      host: process.env.REDISCACHEHOSTNAME,
-      password: process.env.REDISCACHEKEY,
+      host: env.REDISCACHEHOSTNAME,
+      password: env.REDISCACHEKEY,
       tls: { cert: null, key: null }
     });
-    let responseMessage: string[] = [ 'Kevin', 'Hamilton' ];
+    let responseMessage: string[] = [];
+
+    const namesSet: string = 'names';
 
     if (req.method === 'POST' && req.query.name) {
-      await redis.set('mystring', req.query.name);
+      const toAdd = {};
+      toAdd[req.query.name] = Date.now();
+      await redis.zadd(namesSet, toAdd);
     }
 
     try {
-      const lookup: string | number = await redis.get('mystring');
-      if (typeof lookup === 'string') {
-        responseMessage = [lookup];
-      }
+      const oneMinute: number = 60 * 1000;
+      const oneMinuteAgo = Date.now() - oneMinute;
+      await redis.zremrangebyscore(namesSet, '-inf', oneMinuteAgo.toString());
+
+      const currentNames: string[] = await redis.zrange(namesSet, 0, -1);
+      currentNames.sort();
+      responseMessage = currentNames;
     } catch (e) {
       context.log(e);
     }
