@@ -13,7 +13,7 @@ const httpTrigger: AzureFunction = async (context: Context, req: HttpRequest): P
     });
     let responseMessage: string[] = [ 'Kevin', 'Hamilton' ];
 
-    if (req.query.name) {
+    if (req.method === 'POST' && req.query.name) {
       await redis.set('mystring', req.query.name);
     }
 
