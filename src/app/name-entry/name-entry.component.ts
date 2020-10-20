@@ -10,7 +10,7 @@ import { PingService } from '../ping.service';
 export class NameEntryComponent implements OnInit {
   @ViewChild('nametext') nameText: ElementRef;
   private nameId: string = 'name';
-  name: string;
+  name: string = '';
 
   constructor(private pingServer: PingService, private route: ActivatedRoute, private router: Router) { }
 
