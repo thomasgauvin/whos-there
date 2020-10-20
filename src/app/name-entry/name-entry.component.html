@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="card-body">
+      <div class="row">
+        <label for="viewer-name-entry">Enter a name to show up in the list</label>
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="John's Computer" id="viewer-name-entry" #nametext>
+        <div class="input-group-append">
+          <button class="btn btn-outline-primary" type="button" (click)="onNameUpdate()">Save</button>
+        </div>
+      </div>
+    </div>
+</div>

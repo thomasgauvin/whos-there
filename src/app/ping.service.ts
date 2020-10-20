@@ -12,6 +12,8 @@ export class PingService {
 
   private pingUrl: string = '/api/ping';
 
+  private _viewerName: string = '';
+
   private subscription: Subscription;
 
   constructor(private http: HttpClient) {
@@ -27,10 +29,26 @@ export class PingService {
      return this.pageViewersSubject.getValue();
    }
 
+   get viewerName(): string {
+     return this._viewerName;
+   }
+
+   set viewerName(viewerName: string) {
+     this._viewerName = viewerName;
+   }
+
    private updatePageViewers(): void {
-    this.http.get(this.pingUrl).pipe(catchError(error => of([])))
+    if (this.viewerName) {
+      const pingWithName = this.pingUrl + '?name=' + this.viewerName;
+      this.http.post(pingWithName, null).pipe(catchError(error => of([])))
       .subscribe((pageViewers: string[]) => {
         this.pageViewersSubject.next(pageViewers);
       });
+    } else {
+      this.http.get(this.pingUrl).pipe(catchError(error => of([])))
+        .subscribe((pageViewers: string[]) => {
+          this.pageViewersSubject.next(pageViewers);
+        });
+    }
    }
 }

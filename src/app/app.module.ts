@@ -6,11 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PageViewersComponent } from './page-viewers/page-viewers.component';
+import { NameEntryComponent } from './name-entry/name-entry.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageViewersComponent
+    PageViewersComponent,
+    NameEntryComponent
   ],
   imports: [
     BrowserModule,
