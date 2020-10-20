@@ -4,7 +4,8 @@ import { PageViewersComponent } from './page-viewers/page-viewers.component';
 
 
 const routes: Routes = [
-  { path: '', component: PageViewersComponent }
+  { path: '', component: PageViewersComponent },
+  { path: 'name/:name', component: PageViewersComponent },
 ];
 
 @NgModule({

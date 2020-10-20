@@ -4,9 +4,9 @@
         <label for="viewer-name-entry">Enter a name to show up in the list</label>
       </div>
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="John's Computer" id="viewer-name-entry" #nametext>
+        <input type="text" class="form-control" placeholder="John's Computer" id="viewer-name-entry" [value]="name" #nametext>
         <div class="input-group-append">
-          <button class="btn btn-outline-primary" type="button" (click)="onNameUpdate()">Save</button>
+          <button class="btn btn-outline-primary" type="button" (click)="name = nameText.nativeElement.value; onNameUpdate()">Save</button>
         </div>
       </div>
     </div>
