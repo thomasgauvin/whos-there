@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PingService } from '../ping.service';
+import { ActiveName, PingService } from '../ping.service';
 
 @Component({
   selector: 'app-page-viewers',
@@ -8,12 +8,12 @@ import { PingService } from '../ping.service';
 })
 export class PageViewersComponent implements OnInit {
 
-  pageViewers: string[];
+  pageViewers: ActiveName[];
 
   constructor(private pingService: PingService) { }
 
   ngOnInit(): void {
-    this.pingService.pageViewers$.subscribe((pageViewers: string[]) => {
+    this.pingService.pageViewers$.subscribe((pageViewers: ActiveName[]) => {
       this.pageViewers = pageViewers;
     });
 
