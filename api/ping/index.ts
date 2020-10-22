@@ -46,7 +46,15 @@ const httpTrigger: AzureFunction = async (context: Context, req: HttpRequest): P
         }
       }
 
-      currentNames.sort();
+      currentNames.sort((a: ActiveName, b: ActiveName): number => {
+        if (a.name > b.name) {
+          return 1;
+        } else if (a.name < b.name) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
     } catch (e) {
       context.log(e);
     }
