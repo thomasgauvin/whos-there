@@ -17,7 +17,7 @@ export class PingService {
 
   private pingUrl: string = '/api/ping';
 
-  private _viewerName: string = '';
+  private viewerNamePrivate: string = '';
 
   private subscription: Subscription;
 
@@ -35,11 +35,11 @@ export class PingService {
    }
 
    get viewerName(): string {
-     return this._viewerName;
+     return this.viewerNamePrivate;
    }
 
    set viewerName(viewerName: string) {
-     this._viewerName = viewerName;
+     this.viewerNamePrivate = viewerName;
    }
 
    private updatePageViewers(): void {
