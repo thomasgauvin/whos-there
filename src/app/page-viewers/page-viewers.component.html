@@ -3,7 +3,7 @@
 <ul class="list-group">
   <ng-container *ngFor="let viewer of pageViewers">
     <ng-container *ngIf="viewer.stale">
-      <li class="list-group-item list-group-item-warning">{{ viewer.name }}</li>
+      <li class="list-group-item list-group-item-warning">{{ viewer.name }} (Stale)</li>
     </ng-container>
     <ng-container *ngIf="!viewer.stale">
       <li class="list-group-item">{{ viewer.name }}</li>
