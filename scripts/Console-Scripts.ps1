@@ -1,6 +1,7 @@
 # Register helper functions
 Set-Item function:global:Invoke-Npm {
-  . $PSScriptRoot\Invoke-Npm.ps1 @args
+  param([switch]$Async, $NpmArgs)
+  . $PSScriptRoot\Invoke-Npm.ps1 -Async:$Async $NpmArgs
 } -Force
 
 Set-Item function:global:Invoke-Ng {
