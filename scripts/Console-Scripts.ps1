@@ -21,11 +21,12 @@ Set-Item function:global:Start-Server {
   Start-Process npm.cmd run, watch
   Pop-Location
 
-  $ngArgs = @("serve")
+  $npmArgs = @("start")
   if ($OpenBrowser) {
-      $ngArgs += "--open"
+      $npmArgs += "--"
+      $npmArgs += "--open"
   }
-  Invoke-Ng -Async:$Async $ngArgs
+  Invoke-Npm -Async:$Async $npmArgs
 } -Force
 
 Set-Item function:global:Start-Tests {
