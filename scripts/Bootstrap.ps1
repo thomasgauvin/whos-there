@@ -13,11 +13,11 @@ else {
 }
 
 Write-Status "Updating npm"
-. $PSScriptRoot\Invoke-Npm install -g "npm@6" $quiet
+. $PSScriptRoot\Invoke-Npm @('install', '-g', 'npm@6')
 Write-Status "Updating Angular CLI"
-. $PSScriptRoot\Invoke-Npm install -g @angular/cli $quiet
+. $PSScriptRoot\Invoke-Npm @('install', '-g', '@angular/cli')
 Write-Status "Updating requirements"
-. $PSScriptRoot\Invoke-Npm install $quiet
+. $PSScriptRoot\Invoke-Npm @('install')
 
 Write-Status "Updating Azure Function requirements"
 $project_root = Split-Path $PSScriptRoot
