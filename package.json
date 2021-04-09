@@ -28,7 +28,7 @@
     "github-fork-ribbon-css": "^0.2.3",
     "karma-junit-reporter": "^2.0.1",
     "rxjs": "~6.6.7",
-    "tslib": "^2.1.0",
+    "tslib": "^2.2.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
