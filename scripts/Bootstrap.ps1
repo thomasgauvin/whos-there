@@ -13,7 +13,7 @@ else {
 }
 
 Write-Status "Updating npm"
-. $PSScriptRoot\Invoke-Npm @('install', '-g', 'npm@7')
+. $PSScriptRoot\Invoke-Npm @('install', '-g', 'npm@8')
 Write-Status "Updating Angular CLI"
 . $PSScriptRoot\Invoke-Npm @('install', '-g', '@angular/cli')
 Write-Status "Updating requirements"
