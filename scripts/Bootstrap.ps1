@@ -16,6 +16,8 @@ Write-Status "Updating npm"
 . $PSScriptRoot\Invoke-Npm @('install', '-g', 'npm@8')
 Write-Status "Updating Angular CLI"
 . $PSScriptRoot\Invoke-Npm @('install', '-g', '@angular/cli')
+Write-Status "Updating Azure Functions Core Tools"
+. $PSScriptRoot\Invoke-Npm @('install', '-g', 'azure-functions-core-tools@4', '--unsafe-perm', 'true')
 Write-Status "Updating requirements"
 . $PSScriptRoot\Invoke-Npm @('install')
 
