@@ -116,12 +116,22 @@
               "devServerTarget": "whos-there:serve:production"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "defaultProject": "whos-there",
   "cli": {
-    "analytics": "942eae68-29e3-42e5-a501-edeefff549e4"
+    "analytics": "942eae68-29e3-42e5-a501-edeefff549e4",
+    "defaultCollection": "@angular-eslint/schematics"
   }
 }
